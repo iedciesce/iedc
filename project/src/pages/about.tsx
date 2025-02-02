@@ -36,7 +36,7 @@ function App() {
             <div className="mb-20 flex flex-col md:flex-row items-center gap-12">
               <div className="w-full md:w-1/3 flex justify-center">
                 <img 
-                  src="https://ies.ac.in/wp-content/uploads/2023/03/IES-Logo-1.png" 
+                  src="https://media.licdn.com/dms/image/v2/C560BAQGw_O_Imtj_zw/company-logo_200_200/company-logo_200_200/0/1630656696528/ies_college_of_engineering___india_logo?e=2147483647&v=beta&t=0T3SfQW047SUWO6LQhGGq2kSqawqnn1RhucdUYdpmco" 
                   alt="IES College of Engineering Logo" 
                   className="w-48 h-48 object-contain"
                 />
