@@ -35,10 +35,7 @@ app.use('/api/contact', contactRoutes);
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.DATABASE, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.DATABASE);
     console.log('============== MongoDB Database Connected Successfully ==============');
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
