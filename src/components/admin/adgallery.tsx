@@ -5,7 +5,7 @@ import axios from 'axios';
 const BASE_URL = 'https://iedc-03oe.onrender.com/api/gallery';
 
 interface GalleryItem {
-  id: string;
+  _id: string;  // Change id to _id as it's the default MongoDB identifier
   title: string;
   description: string;
   image: string;
@@ -14,7 +14,7 @@ interface GalleryItem {
 const GalleryPage = () => {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [newGalleryItem, setNewGalleryItem] = useState<GalleryItem>({
-    id: '',
+    _id: '',
     title: '',
     description: '',
     image: ''
@@ -52,7 +52,7 @@ const GalleryPage = () => {
         // Update gallery item
         await axios.put(`${BASE_URL}/${editingGalleryItemId}`, newGalleryItem);
         const updatedGalleryItems = galleryItems.map((item) =>
-          item.id === editingGalleryItemId ? { ...item, ...newGalleryItem } : item
+          item._id === editingGalleryItemId ? { ...item, ...newGalleryItem } : item
         );
         setGalleryItems(updatedGalleryItems);
       } else {
@@ -60,7 +60,7 @@ const GalleryPage = () => {
         const response = await axios.post(BASE_URL, newGalleryItem);
         setGalleryItems([...galleryItems, response.data.data]); // Append the new item to the list
       }
-      setNewGalleryItem({ id: '', title: '', description: '', image: '' });
+      setNewGalleryItem({ _id: '', title: '', description: '', image: '' });
       setIsEditing(false);
     } catch (error) {
       console.error('Error submitting gallery item:', error);
@@ -71,14 +71,14 @@ const GalleryPage = () => {
   const handleEdit = (item: GalleryItem) => {
     setNewGalleryItem(item);
     setIsEditing(true);
-    setEditingGalleryItemId(item.id);
+    setEditingGalleryItemId(item._id);  // Update to use _id
   };
 
   // Delete gallery item
   const handleDelete = async (id: string) => {
     try {
       await axios.delete(`${BASE_URL}/${id}`);
-      setGalleryItems(galleryItems.filter((item) => item.id !== id));
+      setGalleryItems(galleryItems.filter((item) => item._id !== id));  // Update to use _id
     } catch (error) {
       console.error('Error deleting gallery item:', error);
     }
@@ -144,25 +144,34 @@ const GalleryPage = () => {
           <tbody>
             {Array.isArray(galleryItems) && galleryItems.length > 0 ? (
               galleryItems.map((item) => (
-                <tr key={item.id}>
+                <tr key={item._id}>  {/* Use _id for the key */}
                   <td className="py-2 px-4 border-b">{item.title}</td>
                   <td className="py-2 px-4 border-b">{item.description}</td>
                   <td className="py-2 px-4 border-b">
                     <img src={item.image} alt={item.title} className="w-16 h-16 object-cover" />
                   </td>
                   <td className="py-2 px-4 border-b">
-                    <button
+                    {/* <button
                       onClick={() => handleEdit(item)}
                       className="text-blue-600 hover:text-blue-800 mr-4"
                     >
                       Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      className="text-red-600 hover:text-red-800"
-                    >
-                      Delete
-                    </button>
+                    </button> */}
+                    <td className="py-2 px-4 border-b">
+  <button
+    onClick={() => handleEdit(item)}
+    className="text-blue-600 hover:text-blue-800 mr-4"
+  >
+    Edit
+  </button>
+  <button
+    onClick={() => handleDelete(item._id)}  // Pass _id for deletion
+    className="text-red-600 hover:text-red-800"
+  >
+    Delete
+  </button>
+</td>
+
                   </td>
                 </tr>
               ))
