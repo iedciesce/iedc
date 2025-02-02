@@ -15,7 +15,7 @@ const Contact = () => {
     setStatus('loading');
 
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post('https://iedc-03oe.onrender.com/api/contact', formData);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -40,21 +40,21 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-blue-600 mr-4" />
                 <div>
                   <h3 className="font-medium">Email</h3>
-                  <p className="text-gray-600">contact@iedc.com</p>
+                  <p className="text-gray-600">iedc@iesce.info</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <Phone className="h-6 w-6 text-blue-600 mr-4" />
                 <div>
                   <h3 className="font-medium">Phone</h3>
-                  <p className="text-gray-600">+91 123 456 7890</p>
+                  <p className="text-gray-600">+91 9656220545</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-6 w-6 text-blue-600 mr-4" />
                 <div>
                   <h3 className="font-medium">Address</h3>
-                  <p className="text-gray-600">123 Innovation Street, Tech City</p>
+                  <p className="text-gray-600">Ies college of engineering, H48X+3P3, Poovathur Parappoor Road, Thrissur District, Chitilappilly, Kerala 680551</p>
                 </div>
               </div>
             </div>
