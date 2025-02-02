@@ -8,7 +8,7 @@ const AdminMessages = () => {
     // Fetch all messages from the API
     const fetchMessages = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/contact'); // Update URL if necessary
+        const response = await fetch('https://iedc-03oe.onrender.com/api/contact'); // Update URL if necessary
         const data = await response.json();
         setMessages(data);
         setLoading(false);
