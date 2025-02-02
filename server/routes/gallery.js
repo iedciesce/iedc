@@ -6,8 +6,8 @@ const router = express.Router();
 // 🟢 GET all gallery items
 router.get('/', async (req, res) => {
   try {
-    const galleryItems = await Gallery.find().sort({ createdAt: -1 });
-    res.json(galleryItems);
+    const galleryItems = await Gallery.find().sort({ createdAt: -1 }); // Sort by createdAt in descending order
+    res.json(galleryItems); // Return the list of gallery items
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const { title, image } = req.body;
 
+    // Validate the input data
     if (!title || !image) {
       return res.status(400).json({ error: "Title and image URL are required" });
     }
@@ -37,7 +38,7 @@ router.get('/:id', async (req, res) => {
     const galleryItem = await Gallery.findById(req.params.id);
     if (!galleryItem) return res.status(404).json({ error: "Gallery item not found" });
 
-    res.json(galleryItem);
+    res.json(galleryItem); // Return the specific gallery item
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -48,10 +49,16 @@ router.put('/:id', async (req, res) => {
   try {
     const { title, image } = req.body;
 
+    // Ensure the data is available
+    if (!title || !image) {
+      return res.status(400).json({ error: "Title and image URL are required" });
+    }
+
+    // Find the gallery item by ID and update it
     const updatedGalleryItem = await Gallery.findByIdAndUpdate(
       req.params.id,
       { title, image },
-      { new: true } // Return updated document
+      { new: true } // Return the updated document
     );
 
     if (!updatedGalleryItem) return res.status(404).json({ error: "Gallery item not found" });
@@ -65,6 +72,7 @@ router.put('/:id', async (req, res) => {
 // 🟢 DELETE a gallery item
 router.delete('/:id', async (req, res) => {
   try {
+    // Delete the gallery item by ID
     const deletedGalleryItem = await Gallery.findByIdAndDelete(req.params.id);
     if (!deletedGalleryItem) return res.status(404).json({ error: "Gallery item not found" });
 
