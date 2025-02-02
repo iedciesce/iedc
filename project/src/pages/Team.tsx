@@ -22,7 +22,7 @@ const Team = () => {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/team');
+        const response = await axios.get('https://iedc-03oe.onrender.com/api/team');
         setTeam(response.data);
       } catch (err) {
         const error = err as AxiosError;
