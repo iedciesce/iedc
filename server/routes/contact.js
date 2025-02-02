@@ -33,4 +33,23 @@ router.post('/', async (req, res) => {
   }
 });
 
+// 🟢 DELETE a contact message by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    const contactId = req.params.id;
+
+    // Try to find and delete the contact by its ID
+    const deletedContact = await Contact.findByIdAndDelete(contactId);
+
+    // If no contact found, return 404
+    if (!deletedContact) {
+      return res.status(404).json({ error: "Contact message not found" });
+    }
+
+    res.json({ message: "Contact message deleted successfully!" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
