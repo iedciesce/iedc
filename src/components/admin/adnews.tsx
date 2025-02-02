@@ -5,7 +5,7 @@ import axios from 'axios';
 const BASE_URL = 'https://iedc-03oe.onrender.com/api/news';
 
 interface NewsItem {
-  id: string;
+  _id: string; // Use _id as the identifier
   title: string;
   content: string;
   date: string;
@@ -15,7 +15,7 @@ interface NewsItem {
 const NewsPage = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [newNewsItem, setNewNewsItem] = useState<NewsItem>({
-    id: '',
+    _id: '',
     title: '',
     content: '',
     date: '',
@@ -54,7 +54,7 @@ const NewsPage = () => {
         // Update news item
         await axios.put(`${BASE_URL}/${editingNewsItemId}`, newNewsItem);
         const updatedNewsItems = newsItems.map((item) =>
-          item.id === editingNewsItemId ? { ...item, ...newNewsItem } : item
+          item._id === editingNewsItemId ? { ...item, ...newNewsItem } : item
         );
         setNewsItems(updatedNewsItems);
       } else {
@@ -62,7 +62,7 @@ const NewsPage = () => {
         const response = await axios.post(BASE_URL, newNewsItem);
         setNewsItems([...newsItems, response.data.data]); // Append the new item to the list
       }
-      setNewNewsItem({ id: '', title: '', content: '', date: '', image: '' });
+      setNewNewsItem({ _id: '', title: '', content: '', date: '', image: '' });
       setIsEditing(false);
     } catch (error) {
       console.error('Error submitting news item:', error);
@@ -73,14 +73,14 @@ const NewsPage = () => {
   const handleEdit = (item: NewsItem) => {
     setNewNewsItem(item);
     setIsEditing(true);
-    setEditingNewsItemId(item.id);
+    setEditingNewsItemId(item._id); // Use _id for editing
   };
 
   // Delete news item
   const handleDelete = async (id: string) => {
     try {
       await axios.delete(`${BASE_URL}/${id}`);
-      setNewsItems(newsItems.filter((item) => item.id !== id));
+      setNewsItems(newsItems.filter((item) => item._id !== id)); // Filter out the deleted item
     } catch (error) {
       console.error('Error deleting news item:', error);
     }
@@ -158,7 +158,7 @@ const NewsPage = () => {
           <tbody>
             {Array.isArray(newsItems) && newsItems.length > 0 ? (
               newsItems.map((item) => (
-                <tr key={item.id}>
+                <tr key={item._id}>
                   <td className="py-2 px-4 border-b">{item.title}</td>
                   <td className="py-2 px-4 border-b">{item.content}</td>
                   <td className="py-2 px-4 border-b">{item.date}</td>
@@ -173,7 +173,7 @@ const NewsPage = () => {
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item._id)}
                       className="text-red-600 hover:text-red-800"
                     >
                       Delete
