@@ -7,7 +7,12 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const newsArticles = await News.find().sort({ createdAt: -1 }); // Sort by date
-    res.json(newsArticles);
+    // Transform each article to include the createdAt as 'date'
+    const transformedArticles = newsArticles.map(article => ({
+      ...article.toObject(),
+      date: article.createdAt.toISOString().split('T')[0], // Convert date to string format YYYY-MM-DD
+    }));
+    res.json(transformedArticles);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -26,7 +31,13 @@ router.post('/', async (req, res) => {
     const newNews = new News({ title, content, image });
     await newNews.save();
 
-    res.status(201).json({ message: "News article created successfully!", data: newNews });
+    // Include createdAt as date in response
+    const newsWithDate = {
+      ...newNews.toObject(),
+      date: newNews.createdAt.toISOString().split('T')[0], // Convert date to string format YYYY-MM-DD
+    };
+
+    res.status(201).json({ message: "News article created successfully!", data: newsWithDate });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -38,7 +49,13 @@ router.get('/:id', async (req, res) => {
     const newsArticle = await News.findById(req.params.id);
     if (!newsArticle) return res.status(404).json({ error: "News article not found" });
 
-    res.json(newsArticle);
+    // Include createdAt as date in response
+    const newsWithDate = {
+      ...newsArticle.toObject(),
+      date: newsArticle.createdAt.toISOString().split('T')[0], // Convert date to string format YYYY-MM-DD
+    };
+
+    res.json(newsWithDate);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -57,7 +74,13 @@ router.put('/:id', async (req, res) => {
 
     if (!updatedNewsArticle) return res.status(404).json({ error: "News article not found" });
 
-    res.json({ message: "News article updated successfully!", data: updatedNewsArticle });
+    // Include createdAt as date in response
+    const newsWithDate = {
+      ...updatedNewsArticle.toObject(),
+      date: updatedNewsArticle.createdAt.toISOString().split('T')[0], // Convert date to string format YYYY-MM-DD
+    };
+
+    res.json({ message: "News article updated successfully!", data: newsWithDate });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
