@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Define the base URL for API requests
-const BASE_URL = 'http://localhost:5000/api/events';
+const BASE_URL = 'https://iedc-03oe.onrender.com/api/events';
 
 interface Event {
   _id: string;  // Using _id instead of id, since MongoDB generates an _id field.
