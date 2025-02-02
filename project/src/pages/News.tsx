@@ -17,7 +17,7 @@ const News = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/news');
+        const response = await axios.get('https://iedc-03oe.onrender.com/api/news');
         setNews(response.data);
       } catch (err) {
         const error = err as AxiosError;
