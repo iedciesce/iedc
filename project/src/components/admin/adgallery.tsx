@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Define the base URL for API requests
-const BASE_URL = 'http://localhost:5000/api/gallery';
+const BASE_URL = 'https://iedc-03oe.onrender.com/api/gallery';
 
 interface GalleryItem {
   id: string;
