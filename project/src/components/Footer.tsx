@@ -12,15 +12,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>contact@iedc.com</span>
+                <span>iedc@iesce.info</span>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
-                <span>+91 123 456 7890</span>
+                <span>+91 9656220545</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
-                <span>123 Innovation Street, Tech City</span>
+                <span>Ies college of engineering, H48X+3P3, Poovathur Parappoor Road, Thrissur District, Chitilappilly, Kerala 680551</span>
               </div>
             </div>
           </div>
@@ -41,16 +41,16 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-400">
+              <a href="https://www.facebook.com/iescethrissur/" className="hover:text-blue-400">
                 <Facebook className="h-6 w-6" />
               </a>
               <a href="#" className="hover:text-blue-400">
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="#" className="hover:text-blue-400">
+              <a href="https://www.linkedin.com/company/ies-iedc-iic/posts/?feedView=all" className="hover:text-blue-400">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="#" className="hover:text-blue-400">
+              <a href="https://www.instagram.com/iesce_iedc/" className="hover:text-blue-400">
                 <Instagram className="h-6 w-6" />
               </a>
             </div>
