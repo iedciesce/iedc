@@ -20,7 +20,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       {/* Sidebar */}
       <aside className="fixed inset-y-0 left-0 bg-white shadow-lg w-64 hidden md:block">
         <div className="flex items-center justify-between h-16 px-6 border-b">
-          <span className="text-xl font-bold text-gray-800">IEDC Admin</span>
+          <span className="text-xl font-bold text-gray-800">IES | IEDC Admin</span>
         </div>
         <nav className="p-4">
           <ul className="space-y-2">
