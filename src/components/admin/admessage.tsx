@@ -13,13 +13,26 @@ const AdminMessages = () => {
         setMessages(data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error('Error fetching messages:', error);
         setLoading(false);
       }
     };
 
     fetchMessages();
   }, []);
+
+  const handleDelete = async (messageId: string) => {
+    try {
+      await fetch(`https://iedc-03oe.onrender.com/api/contact/${messageId}`, {
+        method: 'DELETE',
+      });
+
+      // Filter out the deleted message from the list
+      setMessages(messages.filter((message) => message._id !== messageId));
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  };
 
   if (loading) {
     return <p>Loading messages...</p>;
@@ -38,6 +51,7 @@ const AdminMessages = () => {
               <th style={styles.tableHeader}>Email</th>
               <th style={styles.tableHeader}>Message</th>
               <th style={styles.tableHeader}>Sent At</th>
+              <th style={styles.tableHeader}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +62,14 @@ const AdminMessages = () => {
                 <td style={styles.tableCell}>{message.message}</td>
                 <td style={styles.tableCell}>
                   {new Date(message.createdAt).toLocaleString()}
+                </td>
+                <td style={styles.tableCell}>
+                  <button
+                    onClick={() => handleDelete(message._id)}
+                    style={styles.deleteButton}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -91,6 +113,14 @@ const styles = {
   tableCell: {
     padding: '10px',
     textAlign: 'left',
+  },
+  deleteButton: {
+    backgroundColor: '#f44336',
+    color: '#fff',
+    padding: '6px 12px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
   },
 };
 
