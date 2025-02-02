@@ -14,7 +14,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/gallery');
+        const response = await axios.get('https://iedc-03oe.onrender.com/api/gallery');
         setGallery(response.data);
       } catch (err) {
         const error = err as AxiosError;
