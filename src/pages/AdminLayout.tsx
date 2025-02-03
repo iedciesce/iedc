@@ -1,6 +1,6 @@
 // AdminLayout.tsx
 import React from 'react';
-import { Menu, X, LayoutDashboard, Calendar, Image, Newspaper, Users, MessageSquare, LogOut } from 'lucide-react';
+import { Menu, X, LayoutDashboard, Calendar, Image, Newspaper, Users, MessageSquare, LogOut, FileImage } from 'lucide-react';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -10,9 +10,9 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     { icon: <Calendar className="w-5 h-5" />, label: 'Events', href: '/admin/dashboard/events' },
     { icon: <Image className="w-5 h-5" />, label: 'Gallery', href: '/admin/dashboard/gallery' },
     { icon: <Newspaper className="w-5 h-5" />, label: 'News', href: '/admin/dashboard/news' },
-    // { icon: <Users className="w-5 h-5" />, label: 'Testimonials', href: '/admin/dashboard/testimonials' },
     { icon: <Users className="w-5 h-5" />, label: 'Teams', href: '/admin/dashboard/teams' },
     { icon: <MessageSquare className="w-5 h-5" />, label: 'Messages', href: '/admin/dashboard/messages' },
+    { icon: <FileImage className="w-5 h-5" />, label: 'Image Converter', href: 'https://img-converter-lime.vercel.app/' }
   ];
 
   return (
