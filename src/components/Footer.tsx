@@ -61,7 +61,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p>&copy; {new Date().getFullYear()} IESCE | IEDC. All rights reserved.</p>
-          <p>&copy; {new Date().getFullYear()} IESCE IEDC WEB DEV TEAM </p>
+          <p>&copy; {new Date().getFullYear()} IESCE IEDC WEB DEV TEAM.</p>
         </div>
       </div>
     </footer>
