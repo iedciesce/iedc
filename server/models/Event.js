@@ -25,7 +25,7 @@ const eventSchema = new mongoose.Schema(
     },
     registrationStatus: {
       type: String,
-      enum: ['open', 'closed'],
+      enum: ['open', 'closed' , 'over'],
       default: 'closed',
     },
     createdAt: {
