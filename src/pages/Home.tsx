@@ -87,7 +87,7 @@ const Home = () => {
   useEffect(() => {
     const fetchLatestEvents = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/events/latest', {
+        const response = await fetch('https://iedc-03oe.onrender.com/api/events/latest', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
