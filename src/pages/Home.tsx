@@ -1,7 +1,8 @@
-import React from 'react';
-import { ArrowRight, Calendar, Newspaper, Users } from 'lucide-react';
-import { Target, Lightbulb } from 'lucide-react';
-import { Quote } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import Slider from "react-slick";
+import { ArrowRight, Calendar, Newspaper, Users, Target, Lightbulb, Quote, Rocket, TrendingUp} from 'lucide-react';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const testimonials = [
   {
@@ -24,11 +25,98 @@ const testimonials = [
   }
 ];
 
+const features = [
+  {
+    icon: <Calendar className="h-12 w-12 text-blue-600 mb-4" />,
+    title: "Events & Workshops",
+    description: "Regular events and workshops to enhance your skills and knowledge.",
+  },
+  {
+    icon: <Newspaper className="h-12 w-12 text-blue-600 mb-4" />,
+    title: "Latest News",
+    description: "Stay updated with the latest happenings in the startup ecosystem.",
+  },
+  {
+    icon: <Users className="h-12 w-12 text-blue-600 mb-4" />,
+    title: "Expert Mentorship",
+    description: "Get guidance from industry experts and successful entrepreneurs.",
+  },
+  {
+    icon: <Lightbulb className="h-12 w-12 text-blue-600 mb-4" />,
+    title: "Innovative Ideas",
+    description: "We help bring your innovative ideas to life with expert support.",
+  },
+  {
+    icon: <Rocket className="h-12 w-12 text-blue-600 mb-4" />,
+    title: "Startup Incubation",
+    description: "Resources and funding support to turn your startup dreams into reality.",
+  },
+  {
+    icon: <TrendingUp className="h-12 w-12 text-blue-600 mb-4" />,
+    title: "Growth & Networking",
+    description: "Connect with industry leaders and fellow entrepreneurs for growth opportunities.",
+  },
+];
+
 const Home = () => {
+  const [latestEvents, setLatestEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Slider settings
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 640,
+        settings: { slidesToShow: 1 },
+      },
+    ],
+  };
+
+  useEffect(() => {
+    const fetchLatestEvents = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/events/latest', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch events. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Fetched Events:", data);
+        setLatestEvents(data);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestEvents();
+  }, []);
+
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[600px] bg-gradient-to-r from-blue-600 to-blue-800 w-full">
+      <section className="relative h-[800px] bg-gradient-to-r from-blue-600 to-blue-800 w-full">
   <div className="absolute inset-0">
     <img
       src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
@@ -44,7 +132,7 @@ const Home = () => {
       </p>
       <a
         href="/contact"
-        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50"
+        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-100 hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300"
       >
         Get Started
         <ArrowRight className="ml-2 h-5 w-5" />
@@ -65,7 +153,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Target className="h-6 w-6 text-blue-600" />
               </div>
@@ -75,7 +163,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Users className="h-6 w-6 text-blue-600" />
               </div>
@@ -85,7 +173,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Lightbulb className="h-6 w-6 text-blue-600" />
               </div>
@@ -100,41 +188,62 @@ const Home = () => {
 
       {/* Features Section */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div className="p-6 bg-gray-50 rounded-lg">
-              <Calendar className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Events & Workshops</h3>
-              <p className="text-gray-600">
-                Regular events and workshops to enhance your skills and knowledge.
-              </p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-              <Newspaper className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Latest News</h3>
-              <p className="text-gray-600">
-                Stay updated with the latest happenings in the startup ecosystem.
-              </p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-              <Users className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Expert Mentorship</h3>
-              <p className="text-gray-600">
-                Get guidance from industry experts and successful entrepreneurs.
-              </p>
-            </div>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900">Features</h2>
+          <p className="mt-4 text-lg text-gray-600">
+            Fostering innovation and entrepreneurship in the academic community
+          </p>
         </div>
-      </section>
+        <Slider {...settings}>
+          {features.map((feature, index) => (
+            <div key={index} className="px-4">
+              <div className="p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300 text-center">
+                {feature.icon}
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </section>
 
       {/* Latest Events Preview */}
-      {/* <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8">Upcoming Events</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> */}
-            {/* Other sections */}
-          {/* </div>
-          <div className="text-center mt-8">
+        <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900">Latest Events</h2>
+          </div>
+          {loading ? (
+            <p>Loading events...</p>
+          ) : error ? (
+            <p className="text-red-600">{error}</p>
+          ) : latestEvents.length === 0 ? (
+            <p>No upcoming events at the moment.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {latestEvents.map(event => (
+               <div key={event._id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300">
+                 {event.image && (
+                   <img src={event.image} alt={event.title} className="w-full h-40 object-cover rounded-md mb-4" />
+                 )}
+                 <h3 className="text-xl font-semibold mb-2">{event.title || "No Title"}</h3>
+                 <p className="text-gray-600 mb-2">
+                   {event.date ? new Date(event.date).toDateString() : "Date not available"}
+                 </p>
+                 <p className="text-gray-600 mb-4">
+                   {event.description ? event.description.substring(0, 100) + "..." : "No description available."}
+                 </p>
+               </div>
+               
+
+        ))}
+        
+        </div>
+        
+           )}
+           <div className="text-center mt-8">
             <a
               href="/events"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
@@ -143,11 +252,14 @@ const Home = () => {
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </div>
-        </div>
-      </section> */}
+         </div>
+       </section>
+
+
+
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gray-50">
+      <section id="testimonials" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900">Testimonials</h2>
@@ -158,7 +270,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6 relative">
+              <div key={index} className="bg-gray-50 rounded-lg shadow-md p-6 relative hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300">
                 <Quote className="absolute top-6 right-6 h-8 w-8 text-blue-100" />
                 <div className="flex items-center mb-6">
                   <img
