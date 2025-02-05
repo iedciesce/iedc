@@ -4,6 +4,12 @@ import { ArrowRight, Calendar, Newspaper, Users, Target, Lightbulb, Quote, Rocke
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const heroImages = [
+  "https://raw.githubusercontent.com/iesiedc/IMG/main/images/1738766955251-john-schnobrich-FlPc9_VocJ4-unsplash.jpg",
+  "https://raw.githubusercontent.com/iesiedc/IMG/main/images/1738767078060-scott-graham-5fNmWej4tAA-unsplash.jpg",
+  "https://raw.githubusercontent.com/iesiedc/IMG/main/images/1738767243764-domenico-loia-hGV2TfOh0ns-unsplash.jpg"
+];
+
 const testimonials = [
   {
     name: "Sarah Johnson",
@@ -62,6 +68,15 @@ const Home = () => {
   const [latestEvents, setLatestEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 3000); // Change image every 1 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   // Slider settings
   const settings = {
