@@ -215,7 +215,7 @@ const Home = () => {
     <div className="text-center mb-16">
       <h2 className="text-3xl font-bold text-gray-900">Latest Events</h2>
     </div>
-    
+
     {loading ? (
       <p className="text-center text-gray-600">Loading events...</p>
     ) : error ? (
@@ -229,13 +229,17 @@ const Home = () => {
             key={event._id} 
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300"
           >
-            {/* Event Image (Optional) */}
-            {event.image && (
+            {/* Event Image (Check if Image URL is valid) */}
+            {event.image ? (
               <img 
-                src={event.image} 
+                src={event.image.startsWith("http") ? event.image : `https://yourserver.com${event.image}`}
                 alt={event.title || "Event Image"} 
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
+            ) : (
+              <div className="w-full h-40 bg-gray-200 flex items-center justify-center rounded-md mb-4">
+                <span className="text-gray-500">No Image</span>
+              </div>
             )}
 
             {/* Event Title */}
