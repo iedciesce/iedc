@@ -73,7 +73,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 3000); // Change image every 1 seconds
+    }, 3000); // Change image every 3 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
