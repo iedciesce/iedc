@@ -232,7 +232,7 @@ const Home = () => {
             {/* Event Image (Check if Image URL is valid) */}
             {event.image ? (
               <img 
-                src={event.image.startsWith("http") ? event.image : `https://yourserver.com${event.image}`}
+                src={event.image.startsWith("http") ? event.image : `https://iedc-03oe.onrender.com${event.image}`}
                 alt={event.title || "Event Image"} 
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
