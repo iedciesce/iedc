@@ -209,51 +209,69 @@ const Home = () => {
       </div>
     </section>
 
-      {/* Latest Events Preview */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900">Latest Events</h2>
-          </div>
-          {loading ? (
-            <p>Loading events...</p>
-          ) : error ? (
-            <p className="text-red-600">{error}</p>
-          ) : latestEvents.length === 0 ? (
-            <p>No upcoming events at the moment.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {latestEvents.map(event => (
-               <div key={event._id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300">
-                 {event.image && (
-                   <img src={event.image} alt={event.title} className="w-full h-40 object-cover rounded-md mb-4" />
-                 )}
-                 <h3 className="text-xl font-semibold mb-2">{event.title || "No Title"}</h3>
-                 <p className="text-gray-600 mb-2">
-                   {event.date ? new Date(event.date).toDateString() : "Date not available"}
-                 </p>
-                 <p className="text-gray-600 mb-4">
-                   {event.description ? event.description.substring(0, 100) + "..." : "No description available."}
-                 </p>
-               </div>
-               
+     {/* Latest Events Preview */}
+<section className="py-16 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl font-bold text-gray-900">Latest Events</h2>
+    </div>
+    
+    {loading ? (
+      <p className="text-center text-gray-600">Loading events...</p>
+    ) : error ? (
+      <p className="text-center text-red-600">{error}</p>
+    ) : latestEvents.length === 0 ? (
+      <p className="text-center text-gray-600">No upcoming events at the moment.</p>
+    ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {latestEvents.map((event) => (
+          <div 
+            key={event._id} 
+            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300"
+          >
+            {/* Event Image (Optional) */}
+            {event.image && (
+              <img 
+                src={event.image} 
+                alt={event.title || "Event Image"} 
+                className="w-full h-40 object-cover rounded-md mb-4"
+              />
+            )}
 
-        ))}
-        
-        </div>
-        
-           )}
-           <div className="text-center mt-8">
-            <a
-              href="/events"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-            >
-              View All Events
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            {/* Event Title */}
+            <h3 className="text-xl font-semibold mb-2">
+              {event.title || "No Title"}
+            </h3>
+
+            {/* Event Date */}
+            <p className="text-gray-600 mb-2">
+              {event.date ? new Date(event.date).toDateString() : "Date not available"}
+            </p>
+
+            {/* Event Description */}
+            <p className="text-gray-600 mb-4">
+              {event.description 
+                ? event.description.substring(0, 100) + "..." 
+                : "No description available."
+              }
+            </p>
           </div>
-         </div>
-       </section>
+        ))}
+      </div>
+    )}
+
+    {/* View All Events Button */}
+    <div className="text-center mt-8">
+      <a
+        href="/events"
+        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+      >
+        View All Events
+        <ArrowRight className="ml-2 h-5 w-5" />
+      </a>
+    </div>
+  </div>
+</section>
 
 
 
