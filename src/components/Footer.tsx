@@ -60,7 +60,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p>&copy; {new Date().getFullYear()} IEDC. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} IESCE | IEDC. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} IESCE IEDC WEB DEV TEAM All rights reserved.</p>
         </div>
       </div>
     </footer>
