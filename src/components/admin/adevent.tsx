@@ -165,6 +165,7 @@ const EventPage = () => {
           >
             <option value="open">Open</option>
             <option value="closed">Closed</option>
+            <option value="over">Finished</option>
           </select>
         </div>
         <div className="flex justify-end">
