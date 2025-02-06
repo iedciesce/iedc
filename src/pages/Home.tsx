@@ -132,29 +132,31 @@ const Home = () => {
     <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[800px] bg-gradient-to-r from-blue-600 to-blue-800 w-full">
-  <div className="absolute inset-0">
-    <img
-      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
-      alt="IEDC Hero"
-      className="w-full h-full object-cover opacity-20"
-    />
-  </div>
-  <div className="relative w-full h-full flex items-center px-4 sm:px-6 lg:px-8">
-    <div className="text-white w-full max-w-7xl mx-auto">
-    <h1 className="text-4xl sm:text-5xl font-bold mb-4">Innovation & Entrepreneurship Development Cell</h1>
-      <p className="text-xl mb-8 max-w-2xl">
-        Fostering innovation and entrepreneurial spirit among students through mentorship, resources, and opportunities.
-      </p>
-      <a
-        href="/contact"
-        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-100 hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300"
-      >
-        Get Started
-        <ArrowRight className="ml-2 h-5 w-5" />
-      </a>
-    </div>
-  </div>
-</section>
+      <div className="absolute inset-0 transition-opacity duration-1000 ease-in-out">
+        <img
+          src={heroImages[currentImageIndex]}
+          alt="IEDC Hero"
+          className="w-full h-full object-cover opacity-50 transition-all duration-1000"
+        />
+      </div>
+      <div className="relative w-full h-full flex items-center px-4 sm:px-6 lg:px-8">
+        <div className="text-white w-full max-w-7xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+            Innovation & Entrepreneurship Development Cell
+          </h1>
+          <p className="text-xl mb-8 max-w-2xl">
+            Fostering innovation and entrepreneurial spirit among students through mentorship, resources, and opportunities.
+          </p>
+          <a
+            href="/contact"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-100 hover:shadow-lg transition-transform transform hover:-translate-y-2 duration-300"
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </section>
 
 
       {/* About Section */}
