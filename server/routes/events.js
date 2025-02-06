@@ -6,7 +6,7 @@ const router = express.Router();
 // 🟢 GET latest 3 events (Sorted by date descending)
 router.post('/latest', async (req, res) => {
   try {
-    const latestEvents = await Event.find({}, "title description date").sort({ date: -1 }).limit(3);
+    const latestEvents = await Event.find({}, "title description date image").sort({ date: -1 }).limit(3);
     res.status(200).json(latestEvents);
   } catch (err) {
     console.error('Error fetching latest events:', err);
