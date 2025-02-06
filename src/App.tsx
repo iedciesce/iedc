@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import Home from './pages/Home';
 import Events from './pages/Events';
 import News from './pages/News';
@@ -32,6 +33,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+       <ScrollToTopButton />
       </div>
     </Router>
   );
