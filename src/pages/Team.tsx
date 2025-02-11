@@ -62,8 +62,8 @@ const Team = () => {
             <p>No team members available at the moment.</p>
           </div>
         ) : (
-       <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Leadership Team</h2>
-          <>
+      
+          <><h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Leadership Team</h2>
             {principal && (
               <div className="mb-32">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
