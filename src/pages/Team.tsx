@@ -71,10 +71,9 @@ const Team = () => {
                       alt={principal.name}
                       className="absolute inset-0 w-full h-full object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16">
-                    <span className="text-indigo-300 text-xl mb-4 block">Principal</span>
                     <h2 className="text-5xl font-bold mb-4 text-white leading-tight">{principal.name}</h2>
                     <p className="text-2xl text-indigo-200 mb-8 font-light">{principal.position}</p>
                     <div className="flex space-x-6">
