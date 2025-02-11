@@ -40,9 +40,9 @@ const Team = () => {
       </div>
     );
   }
-
+  const principal = team.find((member) => member.priority === 3);
   const priorityMembers = team.filter((member) => member.priority === 2);
-  const regularMembers = team.filter((member) => member.priority !== 2);
+  const regularMembers = team.filter((member) => member.priority === 1);
 
   return (
     <div id="Teams" className="bg-gray-50">
@@ -59,6 +59,70 @@ const Team = () => {
         {team.length === 0 ? (
           <div className="text-center text-gray-600">
             <p>No team members available at the moment.</p>
+          </div>
+        ) : (
+          <>
+                
+        {/* Principal Section */}
+        {principal && (
+          <div className="mb-32">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-[21/9] relative">
+                <img 
+                  src={principal.image} 
+                  alt={principal.name} 
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16">
+                <span className="text-indigo-300 text-xl mb-4 block">Principal</span>
+                <h2 className="text-5xl font-bold mb-4 text-white leading-tight">{principal.name}</h2>
+                <p className="text-2xl text-indigo-200 mb-8 font-light">{principal.position}</p>
+                <div className="flex space-x-6">
+                  {principal.social?.linkedin && (
+                    <a
+                      href={principal.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/80 hover:text-white transition-colors"
+                      aria-label={`${principal.name}'s LinkedIn`}
+                    >
+                      <Linkedin className="h-8 w-8" />
+                    </a>
+                  )}
+                  {principal.social?.twitter && (
+                    <a
+                      href={principal.social.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/80 hover:text-white transition-colors"
+                      aria-label={`${principal.name}'s Twitter`}
+                    >
+                      <Twitter className="h-8 w-8" />
+                    </a>
+                  )}
+                  {principal.social?.github && (
+                    <a
+                      href={principal.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/80 hover:text-white transition-colors"
+                      aria-label={`${principal.name}'s GitHub`}
+                    >
+                      <Github className="h-8 w-8" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {team.length === 0 ? (
+          <div className="text-center text-gray-600 py-20">
+            <Users className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <p className="text-xl">No team members available at the moment.</p>
           </div>
         ) : (
           <>
