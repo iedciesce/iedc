@@ -73,7 +73,7 @@ const Team = () => {
                       alt={principal.name}
                       className="absolute inset-0 w-full h-full object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16">
                     <h2 className="text-5xl font-bold mb-4 text-white leading-tight">{principal.name}</h2>
@@ -130,7 +130,7 @@ const Team = () => {
             )}
 
             {regularMembers.length > 0 && (
-              <div className="bg-white py-16">
+              <div className=" py-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Team</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
                   {regularMembers.map((member) => (
