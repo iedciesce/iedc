@@ -12,14 +12,8 @@ const TestSchema = new mongoose.Schema({
 const TestModel = mongoose.model('Test', TestSchema);
 
 // Add sample data to trigger database creation
-router.get('/test-insert', async (req, res) => {
-  try {
-    const testData = new TestModel({ name: "John Doe", email: "john@example.com" });
-    await testData.save();
-    res.json({ message: "Data inserted, check MongoDB Compass!" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+router.get('/ping', async (req, res) => {
+ console.log("server is fine ");
 });
 
 export default router;
