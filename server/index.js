@@ -9,6 +9,7 @@ import galleryRoutes from './routes/gallery.js';
 import teamRoutes from './routes/team.js';
 import contactRoutes from './routes/contact.js';
 import testRoutes from './routes/test.js';
+import axios from 'axios';  // Import Axios for pinging
 
  // Correct import
 
@@ -50,3 +51,18 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+// 🔄 Function to Ping API Every 1 Minute
+async function pingServer() {
+  const url = 'https://img-converter.onrender.com/ping';
+  try {
+    const response = await axios.get(url);
+    console.log(`✅ Ping successful: ${response.status} ${response.statusText}`);
+  } catch (error) {
+    console.error('❌ Ping failed:', error.message);
+  }
+}
+
+// Start pinging every 60 seconds
+setInterval(pingServer, 60 * 2000);
