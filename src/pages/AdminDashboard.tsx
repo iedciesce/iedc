@@ -115,7 +115,7 @@ import Addashboard from '../components/admin/addashboard';  // Import the Addash
 import EventPage from '../components/admin/adevent'; // Import the EventPage component
 import Adgallery from '../components/admin/adgallery'
 import Adnews from '../components/admin/adnews'
-
+import ImageConverter from "../components/admin/img-converter"; 
 import Adteam from '../components/admin/adteam'
 import AdminMessages from '../components/admin/admessage';
 
@@ -146,6 +146,7 @@ const AdminDashboard = () => {
         <Route path="/gallery" element={<Adgallery />} />  {/* Updated route */}
         <Route path="/teams" element={<Adteam/>} />  {/* Updated route */}
         <Route path="/messages" element={<AdminMessages/>} /> {/* Updated route */}
+        <Route path="/img-converter" element={<ImageConverter />} />
       </Routes>
     </AdminLayout>
   );
