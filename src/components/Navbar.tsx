@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -11,9 +11,11 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link to="/" className="flex-shrink-0 flex items-center">
-            <img src="https://iesiedc.github.io/iesceiedc/logo1.png" style={{ width: '100px', height: 'auto' }} />
-
-              {/* <span className="text-2xl font-bold text-black-100">IESCE IEDC</span> */}
+              <img
+                src="https://iesiedc.github.io/iesceiedc/logo1.png"
+                style={{ width: '100px', height: 'auto' }}
+                alt="Logo"
+              />
             </Link>
           </div>
 
@@ -26,10 +28,16 @@ const Navbar = () => {
             <Link to="/gallery" className="text-gray-700 hover:text-blue-600">Gallery</Link>
             <Link to="/team" className="text-gray-700 hover:text-blue-600">Team</Link>
             <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
-            <Link to="/admin/login" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-              <User className="h-4 w-4 mr-2" />
-              Admin Login
-            </Link>
+            
+            {/* Download App Button */}
+            <a
+              href="https://drive.google.com/file/d/1tRyZDdAlk-mflbtdoxfZJFJMler9ClXU/view?usp=sharing"
+              download
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Download App
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -55,7 +63,15 @@ const Navbar = () => {
             <Link to="/gallery" className="block px-3 py-2 text-gray-700 hover:text-blue-600">Gallery</Link>
             <Link to="/team" className="block px-3 py-2 text-gray-700 hover:text-blue-600">Team</Link>
             <Link to="/contact" className="block px-3 py-2 text-gray-700 hover:text-blue-600">Contact Us</Link>
-            <Link to="/admin/login" className="block px-3 py-2 text-blue-600 hover:text-blue-700">Admin Login</Link>
+            
+            {/* Download App Button (Mobile) */}
+            <a
+              href="https://drive.google.com/file/d/1tRyZDdAlk-mflbtdoxfZJFJMler9ClXU/view?usp=sharing"
+              download
+              className="block px-3 py-2 text-green-600 hover:text-green-700"
+            >
+              Download App
+            </a>
           </div>
         </div>
       )}
