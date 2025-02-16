@@ -31,13 +31,14 @@ const Navbar = () => {
             
             {/* Download App Button */}
             <a
-              href="https://drive.google.com/file/d/1tRyZDdAlk-mflbtdoxfZJFJMler9ClXU/view?usp=sharing"
-              download
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
-            >
-              <Download className="h-4 w-4 mr-2" />
-              Download App
+              href="https://example.com/your-app.apk"
+            download
+            className="inline-flex items-center px-5 py-2.5 text-white bg-gradient-to-r from-green-500 to-green-700 rounded-full shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                <Download className="h-5 w-5 mr-2" />
+                    Download App
             </a>
+
           </div>
 
           {/* Mobile menu button */}
