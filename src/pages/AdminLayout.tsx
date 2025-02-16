@@ -12,7 +12,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     { icon: <Newspaper className="w-5 h-5" />, label: 'News', href: '/admin/dashboard/news' },
     { icon: <Users className="w-5 h-5" />, label: 'Teams', href: '/admin/dashboard/teams' },
     { icon: <MessageSquare className="w-5 h-5" />, label: 'Messages', href: '/admin/dashboard/messages' },
-    { icon: <FileImage className="w-5 h-5" />, label: 'Image Converter', href: 'https://img-converter-lime.vercel.app/' }
+    { icon: <FileImage className="w-5 h-5" />, label: 'Image Converter', href: '/admin/dashboard/img-converter' }
   ];
 
   return (
