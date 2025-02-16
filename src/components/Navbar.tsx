@@ -31,7 +31,7 @@ const Navbar = () => {
             
             {/* Download App Button */}
             <a
-  href="https://example.com/your-app.apk"
+  href="https://drive.google.com/file/d/1tRyZDdAlk-mflbtdoxfZJFJMler9ClXU/view?usp=sharing"
   download
   className="inline-flex items-center px-5 py-2 text-white bg-blue-600 rounded-lg shadow-md transition-all duration-300 hover:bg-blue-700 hover:shadow-lg"
 >
@@ -68,12 +68,13 @@ const Navbar = () => {
             
             {/* Download App Button (Mobile) */}
             <a
-              href="https://drive.google.com/file/d/1tRyZDdAlk-mflbtdoxfZJFJMler9ClXU/view?usp=sharing"
-              download
-              className="block px-3 py-2 text-green-600 hover:text-green-700"
-            >
-              Download App
-            </a>
+  href="https://drive.google.com/file/d/1tRyZDdAlk-mflbtdoxfZJFJMler9ClXU/view?usp=sharing"
+  download
+  className="block w-full text-center px-4 py-2 text-white bg-blue-600 rounded-md shadow-sm transition-all duration-300 hover:bg-blue-700 hover:shadow-md"
+>
+  📥 Download App
+</a>
+
           </div>
         </div>
       )}
