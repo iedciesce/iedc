@@ -72,15 +72,15 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-8">
+    <div className="min-h-screen bg-white text-gray-900 p-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Image Upload to GitHub</h1>
-          <p className="text-gray-400">Upload your image and get a GitHub URL</p>
+          <h1 className="text-4xl font-bold mb-4 text-blue-600">Image Upload to GitHub</h1>
+          <p className="text-gray-600">Upload your image and get a GitHub URL</p>
         </div>
 
         <div
-          className="border-2 border-dashed border-gray-600 rounded-lg p-8 mb-8 hover:border-blue-500 transition-colors cursor-pointer"
+          className="border-2 border-dashed border-gray-300 rounded-lg p-8 mb-8 hover:border-blue-500 transition-colors cursor-pointer"
           onClick={() => fileInputRef.current?.click()}
           onDragOver={handleDragOver}
           onDrop={handleDrop}
@@ -97,12 +97,12 @@ function App() {
               <img
                 src={previewUrl}
                 alt="Preview"
-                className="max-h-64 rounded-lg shadow-lg"
+                className="max-h-64 rounded-lg shadow-md"
               />
             ) : (
               <>
                 <Upload className="w-16 h-16 text-gray-400" />
-                <p className="text-gray-400 text-center">
+                <p className="text-gray-600 text-center">
                   Drag and drop your image here or click to select
                 </p>
               </>
@@ -111,20 +111,20 @@ function App() {
         </div>
 
         {selectedImage && (
-          <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
+          <div className="bg-gray-50 rounded-lg p-6 shadow-md">
             <div className="flex items-center gap-4 mb-4">
               <ImageIcon className="text-blue-500" />
               <span className="font-medium">{selectedImage.name}</span>
             </div>
             {uploadedUrl ? (
               <div className="mt-4">
-                <div className="flex items-center gap-4 bg-gray-700 p-3 rounded">
+                <div className="flex items-center gap-4 bg-white p-3 rounded border border-gray-300">
                   <Link className="text-blue-500" />
                   <input
                     type="text"
                     value={uploadedUrl}
                     readOnly
-                    className="flex-1 bg-transparent text-sm text-gray-300 outline-none"
+                    className="flex-1 bg-transparent text-sm text-gray-700 outline-none"
                   />
                   <button
                     onClick={copyToClipboard}
