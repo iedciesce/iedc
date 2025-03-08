@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://iedc-psi.vercel.app/sitemap.xml
